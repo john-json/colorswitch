@@ -1,22 +1,26 @@
-# dark-mode-notify
+# colorswitch
 
-This small Swift program will run a command whenever the dark mode status changes on macOS. You can use it to change your vim color config automatically for example.
+This small Swift program for sketchybar that will run a command whenever the dark mode status changes on macOS. 
 
-## Usage
+## ----- Usage
 
 Use make to compile the program, then run directly:
 
-```shell
-.build/release/dark-mode-notify <your-program>
-```
+----  shell
+
+.build/release/colorswitch <your-program>
+
+
+---------
 
 Alternatively you can install it by doing `make install`.
 
 The program will be run immediately when the command starts, and every time the OS goes from dark mode to light mode or back. The environment variable `DARKMODE` will be set to either `1` or `0`.
 
-## Background agent
+## -----  Background agent
 
-To keep this program running in the background, compile the binary to somewhere and create the following file at `~/Library/LaunchAgents/ke.bou.dark-mode-notify.plist`. Don't forget to replace the arguments and the path to the logs (which comes in handy for debugging)
+To keep this program running in the background, compile the binary to somewhere and create the following file at 
+`~/Library/LaunchAgents/com.user.colorswitch.plist`. Don't forget to replace the arguments and the path to the logs (which comes in handy for debugging)
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -25,23 +29,23 @@ To keep this program running in the background, compile the binary to somewhere 
 <plist version="1.0">
 <dict>
     <key>Label</key>
-    <string>ke.bou.dark-mode-notify</string>
+    <string>com.user.colorswitch</string>
     <key>KeepAlive</key>
     <true/>
     <key>StandardErrorPath</key>
-    <string>----Path to a location----/dark-mode-notify-stderr.log</string>
+    <string>~/.config/sketchybar/helpers/colorswitch/colorswitch-stderr.log</string>
     <key>StandardOutPath</key>
-    <string>----Path to a location----/dark-mode-notify-stdout.log</string>
+    <string>~/.config/sketchybar/helpers/colorswitch/colorswitch-stdout.log</string>
     <key>ProgramArguments</key>
     <array>
-       <string>/usr/local/bin/dark-mode-notify</string>
-       <string>--- Path to your script ---</string>
+       <string>/usr/bin/env/colorswitch</string>
+       <string>~/.config/sketchybar/helpers/colorswitch/colorswitch.sh</string>
     </array>
 </dict>
 </plist>
 ```
 
-Then `launchctl load -w ~/Library/LaunchAgents/ke.bou.dark-mode-notify.plist` will keep it running on boot.
+Then `launchctl load -w ~/Library/LaunchAgents/com.user.colorswitch.plist` will keep it running on boot.
 
 ## Credit
 
