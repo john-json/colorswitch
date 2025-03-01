@@ -2,16 +2,14 @@
 
 This small Swift program for sketchybar that will run a command whenever the dark mode status changes on macOS. 
 
-## ----- Usage
+## Usage
 
 Use make to compile the program, then run directly:
 
-----  shell
+- shell
 
 .build/release/colorswitch <your-program>
 
-
----------
 
 Alternatively you can install it by doing `make install`.
 
