@@ -11,14 +11,21 @@ Use make to compile the program, then run directly:
 .build/release/colorswitch <your-program>
 
 
-Alternatively you can install it by doing `make install`.
+Alternatively you can install it by doing 
+
+`make install`.
 
 The program will be run immediately when the command starts, and every time the OS goes from dark mode to light mode or back. The environment variable `DARKMODE` will be set to either `1` or `0`.
 
 ## -----  Background agent
 
 To keep this program running in the background, compile the binary to somewhere and create the following file at 
-`~/Library/LaunchAgents/com.user.colorswitch.plist`. Don't forget to replace the arguments and the path to the logs (which comes in handy for debugging)
+
+`~/Library/LaunchAgents/com.user.colorswitch.plist`. 
+
+Don't forget to replace the arguments and the path to the logs (which comes in handy for debugging)
+
+----------------------------------------------------------------------
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -43,7 +50,13 @@ To keep this program running in the background, compile the binary to somewhere 
 </plist>
 ```
 
-Then `launchctl load -w ~/Library/LaunchAgents/com.user.colorswitch.plist` will keep it running on boot.
+--------------------------------------------------------------------
+
+Then 
+
+`launchctl load -w ~/Library/LaunchAgents/com.user.colorswitch.plist` 
+
+will keep it running on boot.
 
 ## Credit
 
